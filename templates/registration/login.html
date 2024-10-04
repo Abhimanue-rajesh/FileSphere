@@ -1,12 +1,35 @@
 {% extends "unauthenticated_base.html" %}
+{% load static %}
 {% block title %}
-    Login
+    Login - FileSphere
 {% endblock title %}
 {% block content %}
-    <h2>Log In</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Log In</button>
-    </form>
+    <div class="row d-flex align-items-center vertically-center">
+        <div class="col text-end">
+            <img src="{% static 'images/login.webp' %}"
+                 width="600"
+                 height="500"
+                 loading="lazy"
+                 alt="Home Background">
+        </div>
+        <div class="col text-start">
+            <div class="border rounded-4 text-center p-3 mx-5">
+                <form method="post">
+                    <h3>Login</h3>
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{ form.username }}
+                        <label for="id_username">Username</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{ form.password }}
+                        <label for="id_password">Password</label>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary">Log In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

@@ -1,16 +1,22 @@
 {% extends "unauthenticated_base.html" %}
+{% load static %}
 {% block title %}
-    Home
+    FileSphere
 {% endblock title %}
 {% block content %}
-    {% if user.is_authenticated %}
-        Hi {{ user.username }}!
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Log Out</button>
-        </form>
-    {% else %}
-        <p>You are not logged in</p>
-        <a href="{% url 'login' %}">Log In</a>
-    {% endif %}
+    <div class="row d-flex align-items-center vertically-center">
+        <div class="col-6">
+            <img src="{% static 'images/home_bg.webp' %}"
+                 width="600"
+                 height="500"
+                 loading="lazy"
+                 alt="Home Background">
+        </div>
+        <div class="col-6">
+            <h1 class="display-5 fw-bold">FileSphere</h1>
+            <p class="lead">
+                FileSphere is a powerful document management application designed to streamline the storage, organization, and retrieval of digital documents. It offers features like secure file uploading, categorization, version control, role-based access permissions, and audit trails.
+            </p>
+        </div>
+    </div>
 {% endblock content %}
